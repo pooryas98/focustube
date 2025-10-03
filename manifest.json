@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Shorts Hider",
+  "version": "1.0",
+  "description": "Hides YouTube Shorts from the YouTube homepage and other pages.",
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
