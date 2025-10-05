@@ -35,59 +35,6 @@ const applyShortsVisibility = (hidden) => {
       parentElement.style.display = displayStyle;
     }
   });
-
-  // Handle the "Show Hidden Shorts" button
-  const buttonId = 'show-hidden-shorts-button';
-  const existingButton = document.getElementById(buttonId);
-  
-  if (hidden) {
-    if (!existingButton) {
-      createShowButton(buttonId);
-    } else {
-      existingButton.style.display = ''; // Ensure button is visible
-    }
-  } else {
-    if (existingButton) {
-      existingButton.remove();
-    }
-  }
-};
-
-// Separate function for button creation
-const createShowButton = (buttonId) => {
-  const showButton = document.createElement('button');
-  showButton.id = buttonId;
-  showButton.textContent = 'Show Hidden Shorts';
-  showButton.style.cssText = `
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 9999;
-    padding: 12px 16px;
-    background-color: #ff0000;
-    color: white;
-    border: none;
-    border-radius: 24px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    transition: all 0.2s ease;
-  `;
-  
-  showButton.addEventListener('click', () => {
-    // Reset all hidden elements
-    document.querySelectorAll('[style*="display: none"]').forEach(el => {
-      if (el.dataset.wasHiddenByShortsBlocker) {
-        el.style.display = '';
-        delete el.dataset.wasHiddenByShortsBlocker;
-      }
-    });
-    
-    showButton.style.display = 'none';
-  });
-  
-  document.body.appendChild(showButton);
 };
 
 // Debounced storage listener
@@ -100,7 +47,9 @@ const debouncedApply = (hidden) => {
 };
 
 chrome.storage.sync.get('shortsHidden', (data) => {
-  debouncedApply(data.shortsHidden);
+  // If the value is not set, default to true (hidden)
+  const isHidden = data.shortsHidden === undefined ? true : data.shortsHidden;
+  debouncedApply(isHidden);
 });
 
 // More efficient observer with throttling
