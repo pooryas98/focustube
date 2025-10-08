@@ -1,35 +1,45 @@
-# YouTube Shorts Hider - Chrome Extension
+# YouTube Shorts Hider
 
-This is a simple, lightweight Chrome extension designed to hide YouTube Shorts from your feed, promoting a more focused browsing experience on YouTube.
+A simple, lightweight Chrome extension to hide YouTube Shorts for a more focused browsing experience.
 
 ## Features
 
-*   **Hides Shorts Shelves:** Automatically removes the dedicated "Shorts" shelves from the YouTube homepage and other sections.
-*   **Removes Individual Shorts:** Hides individual Shorts videos that might appear interspersed within your regular video feed (e.g., subscriptions, recommended).
-*   **Dynamic Content Handling:** Utilizes a `MutationObserver` to detect and hide Shorts that load dynamically as you scroll.
-*   **Persistent Settings:** Remembers your preference to hide or show Shorts using Chrome's storage API.
-*   **Manual Override Button:** When Shorts are hidden, a small "Show Hidden Shorts" button appears on the page, allowing you to temporarily reveal them.
-*   **Easy Toggle:** Control the visibility of Shorts directly from the extension's popup icon in the browser toolbar.
+- **Declutter Your Feed:** Automatically hides the "Shorts" shelves and any individual Shorts videos from your homepage, subscriptions, and recommendations.
+- **Works Dynamically:** Hides new Shorts as you scroll down the page, without needing to refresh.
+- **Easy to Toggle:** A simple click on the extension icon in your browser toolbar lets you turn the hiding on or off.
+- **Remembers Your Choice:** Your preference is saved, so you don't have to re-configure it every time you open YouTube.
 
-## Installation (Developer Mode)
+## Installation
 
-To install this extension from the source code:
+### From the Chrome Web Store (Recommended)
 
-1.  **Obtain the Code:** Download the extension files (manifest.json, content.js, popup.html, popup.js, popup.css, icons folder) and place them in a single folder on your computer.
-2.  **Open Chrome Extensions:** Open Google Chrome and navigate to `chrome://extensions`.
-3.  **Enable Developer Mode:** Toggle the "Developer mode" switch located in the top-right corner of the extensions page.
-4.  **Load the Extension:** Click the "Load unpacked" button and select the folder containing the extension files.
+*(Coming Soon!)*
 
-The extension icon will now appear in your browser toolbar, and the Shorts hiding functionality will be active on YouTube pages.
+### Manual Installation (for Developers)
+
+1.  **Download the Code:** Download the project files and unzip them into a folder on your computer.
+2.  **Open Chrome Extensions:** In Chrome, navigate to `chrome://extensions`.
+3.  **Enable Developer Mode:** Turn on the "Developer mode" toggle in the top-right corner.
+4.  **Load the Extension:** Click "Load unpacked" and select the folder where you unzipped the files.
+
+## Usage
+
+1.  Click the extension icon in the Chrome toolbar.
+2.  Click the "Show Shorts" or "Hide Shorts" button to toggle the visibility of Shorts on YouTube.
+3.  The changes will apply instantly to your open YouTube tabs.
 
 ## How It Works
 
-*   **Content Script (`content.js`):** This script runs automatically on `https://www.youtube.com/*` pages. It identifies HTML elements associated with YouTube Shorts (using CSS selectors targeting specific YouTube component tags and links starting with `/shorts/`) and sets their CSS `display` property to `none`.
-*   **Popup Interface (`popup.html`, `popup.js`, `popup.css`):** Provides a simple user interface (a button) to toggle the `shortsHidden` preference. When clicked, it saves the new state using `chrome.storage.sync` and sends a message to the content script to update the page immediately.
-*   **Storage (`chrome.storage.sync`):** Stores the user's preference (`true` for hidden, `false` for shown) so it persists across browser sessions and tabs.
-*   **Messaging:** The extension uses `chrome.runtime.onMessage` and `chrome.tabs.sendMessage` to communicate between the popup and the content script, triggering the visual updates on the page.
-*   **MutationObserver:** Monitors the page's DOM for changes (new content loading). When new elements are added, the content script re-runs its hiding logic to ensure any newly loaded Shorts are also hidden.
+The extension adds a small stylesheet to YouTube pages. When "Hide Shorts" is active, this stylesheet tells your browser not to display the elements that make up YouTube Shorts. This is a fast and efficient way to clean up your feed without slowing down your browsing.
+
+## Privacy
+
+This extension is designed with your privacy in mind. It does not collect, store, or transmit any of your personal data. All settings are stored locally on your computer using Chrome's built-in storage.
 
 ## Contributing
 
-This is a basic extension, but contributions are welcome! If you find bugs or have suggestions for improvements (e.g., more granular hiding options, different UI), feel free to open an issue or submit a pull request.
+Contributions are welcome! If you have ideas for improvements or find a bug, please open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

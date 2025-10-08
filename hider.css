@@ -1,0 +1,7 @@
+body.hide-shorts ytd-rich-shelf-renderer[is-shorts],
+body.hide-shorts ytd-reel-shelf-renderer,
+body.hide-shorts ytd-rich-section-renderer:has([is-shorts]),
+body.hide-shorts [data-shorts-shelf],
+body.hide-shorts a[href^="/shorts/"] {
+  display: none;
+}
