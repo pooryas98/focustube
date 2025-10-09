@@ -5,8 +5,46 @@
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <h1>YouTube Shorts Hider</h1>
-  <button id="toggleShorts">Toggle Shorts</button>
+  <div class="container">
+    <div class="header">
+      <h1>YouTube Shorts Hider</h1>
+      <div class="status-indicator" id="statusIndicator"></div>
+    </div>
+
+    <div class="content">
+      <button id="toggleShorts" class="toggle-button">
+        <span id="buttonText">Hide Shorts</span>
+        <span id="buttonIcon">📺</span>
+      </button>
+
+      <div class="stats" id="statsSection">
+        <div class="stat-item">
+          <span class="stat-label">Status:</span>
+          <span class="stat-value" id="currentStatus">Loading...</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Hidden Elements:</span>
+          <span class="stat-value" id="hiddenCount">0</span>
+        </div>
+      </div>
+
+      <div class="options" id="optionsSection">
+        <label class="option-item">
+          <input type="checkbox" id="autoHide" checked>
+          <span>Auto-hide new Shorts as they load</span>
+        </label>
+        <label class="option-item">
+          <input type="checkbox" id="showNotifications" checked>
+          <span>Show notifications when hiding</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="footer">
+      <button id="refreshPage" class="secondary-button">Refresh YouTube</button>
+      <div class="version">v1.2</div>
+    </div>
+  </div>
   <script src="popup.js"></script>
 </body>
 </html>

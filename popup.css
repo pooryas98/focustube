@@ -1,24 +1,232 @@
+/* Enhanced YouTube Shorts Hider Popup Styles */
+:root {
+  --primary-color: #ff0000;
+  --secondary-color: #cc0000;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --background-color: #f8f9fa;
+  --text-color: #333;
+  --border-color: #dee2e6;
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  width: 200px;
-  padding: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  width: 350px;
+  min-height: 450px;
+  background: linear-gradient(135deg, var(--background-color) 0%, #ffffff 100%);
+  color: var(--text-color);
+  line-height: 1.5;
 }
 
-h1 {
-  font-size: 1.2em;
-  text-align: center;
+/* Container Layout */
+.container {
+  padding: 20px;
 }
 
-button {
+/* Header Section */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin: 0;
+}
+
+.status-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--success-color);
+  box-shadow: 0 0 10px rgba(40, 167, 69, 0.4);
+  transition: all 0.3s ease;
+}
+
+.status-indicator.inactive {
+  background-color: var(--danger-color);
+  box-shadow: 0 0 10px rgba(220, 53, 69, 0.4);
+}
+
+/* Content Section */
+.content {
+  margin-bottom: 20px;
+}
+
+/* Toggle Button */
+.toggle-button {
   width: 100%;
-  padding: 10px;
-  background-color: #007bff;
+  padding: 15px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+}
+
+.toggle-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+}
+
+.toggle-button:active {
+  transform: translateY(0);
+}
+
+#buttonIcon {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.toggle-button:hover #buttonIcon {
+  transform: scale(1.1);
+}
+
+/* Stats Section */
+.stats {
+  background: white;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-color);
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.stat-item:last-child {
+  border-bottom: none;
+}
+
+.stat-label {
+  font-weight: 500;
+  color: #666;
+}
+
+.stat-value {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.stat-value.active {
+  color: var(--success-color);
+}
+
+.stat-value.inactive {
+  color: var(--danger-color);
+}
+
+/* Options Section */
+.options {
+  background: white;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-color);
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.option-item input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary-color);
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #0056b3;
+.option-item span {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Footer Section */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+}
+
+.secondary-button {
+  padding: 8px 16px;
+  background: transparent;
+  color: #666;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.secondary-button:hover {
+  background-color: #f8f9fa;
+  border-color: #999;
+}
+
+.version {
+  font-size: 11px;
+  color: #999;
+  font-weight: 500;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.container > * {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.header { animation-delay: 0.1s; }
+.content { animation-delay: 0.2s; }
+.footer { animation-delay: 0.3s; }
+
+/* Responsive Design */
+@media (max-width: 400px) {
+  body {
+    width: 300px;
+  }
+
+  .container {
+    padding: 15px;
+  }
 }

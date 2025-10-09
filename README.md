@@ -1,45 +1,145 @@
 # YouTube Shorts Hider
 
-A simple, lightweight Chrome extension to hide YouTube Shorts for a more focused browsing experience.
+An enhanced, feature-rich Chrome extension to hide YouTube Shorts for a cleaner, more focused browsing experience.
 
-## Features
+## ✨ Features
 
-- **Declutter Your Feed:** Automatically hides the "Shorts" shelves and any individual Shorts videos from your homepage, subscriptions, and recommendations.
-- **Works Dynamically:** Hides new Shorts as you scroll down the page, without needing to refresh.
-- **Easy to Toggle:** A simple click on the extension icon in your browser toolbar lets you turn the hiding on or off.
-- **Remembers Your Choice:** Your preference is saved, so you don't have to re-configure it every time you open YouTube.
+### Core Functionality
+- **🛡️ Advanced Hiding:** Robust CSS selectors that work across different YouTube page layouts
+- **⚡ Real-time Processing:** Uses MutationObserver to hide Shorts as they load dynamically
+- **📊 Live Statistics:** Real-time counter showing how many Shorts are currently hidden
+- **🔄 Smart Refresh:** Refresh YouTube pages directly from the extension popup
 
-## Installation
+### Enhanced User Experience
+- **🎨 Modern UI:** Beautiful, responsive popup interface with smooth animations
+- **📱 Visual Feedback:** Status indicators and notifications for better user feedback
+- **⚙️ Customizable Options:** Toggle auto-hide and notification preferences
+- **🎯 Precise Control:** Enhanced toggle system with immediate visual feedback
+
+### Performance & Reliability
+- **🚀 Performance Optimized:** Reduced layout thrashing and memory-efficient element tracking
+- **🛠️ Error Handling:** Comprehensive error handling and graceful degradation
+- **🔧 Auto-cleanup:** Automatic cleanup of detached DOM elements to prevent memory leaks
+- **📈 Robust Selectors:** Multiple fallback selectors to handle YouTube's changing DOM structure
+
+## 🚀 Installation
 
 ### From the Chrome Web Store (Recommended)
-
 *(Coming Soon!)*
 
 ### Manual Installation (for Developers)
 
-1.  **Download the Code:** Download the project files and unzip them into a folder on your computer.
-2.  **Open Chrome Extensions:** In Chrome, navigate to `chrome://extensions`.
-3.  **Enable Developer Mode:** Turn on the "Developer mode" toggle in the top-right corner.
-4.  **Load the Extension:** Click "Load unpacked" and select the folder where you unzipped the files.
+1. **Download the Code:** Clone or download the project files to your computer
+2. **Open Chrome Extensions:** Navigate to `chrome://extensions`
+3. **Enable Developer Mode:** Toggle "Developer mode" in the top-right corner
+4. **Load the Extension:** Click "Load unpacked" and select the project folder
 
-## Usage
+## 📖 Usage
 
-1.  Click the extension icon in the Chrome toolbar.
-2.  Click the "Show Shorts" or "Hide Shorts" button to toggle the visibility of Shorts on YouTube.
-3.  The changes will apply instantly to your open YouTube tabs.
+### Basic Usage
+1. Click the extension icon in your Chrome toolbar
+2. Use the main toggle button to show/hide YouTube Shorts
+3. The extension works automatically across all YouTube pages
 
-## How It Works
+### Advanced Features
+- **Statistics Panel:** View real-time count of hidden Shorts
+- **Options Menu:** Customize auto-hide and notification settings
+- **Refresh Button:** Quickly refresh YouTube pages when needed
+- **Status Indicator:** Visual confirmation of the extension's current state
 
-The extension adds a small stylesheet to YouTube pages. When "Hide Shorts" is active, this stylesheet tells your browser not to display the elements that make up YouTube Shorts. This is a fast and efficient way to clean up your feed without slowing down your browsing.
+## 🔧 How It Works
 
-## Privacy
+The extension uses multiple sophisticated techniques:
 
-This extension is designed with your privacy in mind. It does not collect, store, or transmit any of your personal data. All settings are stored locally on your computer using Chrome's built-in storage.
+1. **CSS Selectors:** Comprehensive selectors target various Shorts elements across YouTube's DOM
+2. **MutationObserver:** Monitors DOM changes to catch dynamically loaded content
+3. **Element Tracking:** Maintains a Set of hidden elements for efficient management
+4. **Performance Optimization:** Uses hardware acceleration and efficient DOM manipulation
 
-## Contributing
+## 📋 Technical Details
 
-Contributions are welcome! If you have ideas for improvements or find a bug, please open an issue or submit a pull request.
+### Architecture
+- **Content Script:** Handles DOM manipulation and real-time hiding
+- **Popup Interface:** Provides user controls and displays statistics
+- **Background Service:** Manages extension lifecycle and settings
+- **CSS Styling:** Enhanced selectors with performance optimizations
 
-## License
+### Browser Compatibility
+- **Chrome:** Full support (Manifest V3)
+- **Edge:** Compatible (Chromium-based)
+- **Opera:** Compatible (Chromium-based)
+- **Firefox:** Not supported (Manifest V3 not fully supported)
+
+## 🔒 Privacy & Security
+
+- **No Data Collection:** Extension doesn't collect or transmit personal data
+- **Local Storage Only:** All settings stored locally using Chrome's sync storage
+- **Minimal Permissions:** Only requests necessary permissions for core functionality
+- **Open Source:** Code is publicly available for security review
+
+## 🛠️ Development
+
+### Project Structure
+```
+├── manifest.json      # Extension configuration
+├── background.js      # Background service worker
+├── content.js         # Main content script
+├── popup.html         # Popup interface
+├── popup.js           # Popup functionality
+├── popup.css          # Popup styling
+├── hider.css          # YouTube page styling
+├── icons/             # Extension icons
+└── README.md          # Documentation
+```
+
+### Key Improvements in v1.2
+- ✅ Enhanced CSS selectors for better reliability
+- ✅ Modern, responsive popup UI with animations
+- ✅ Real-time statistics and monitoring
+- ✅ Advanced error handling and performance optimizations
+- ✅ Improved DOM manipulation with MutationObserver
+- ✅ Memory leak prevention with automatic cleanup
+- ✅ Better user feedback with notifications
+- ✅ Comprehensive documentation updates
+
+## 🤝 Contributing
+
+Contributions are welcome! Here's how you can help:
+
+1. **Bug Reports:** Open an issue with detailed reproduction steps
+2. **Feature Requests:** Suggest new features or improvements
+3. **Code Contributions:** Submit pull requests with improvements
+4. **Testing:** Help test across different YouTube layouts and scenarios
+
+## 📄 License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## 🆘 Troubleshooting
+
+### Common Issues
+
+**Extension not working on some pages:**
+- Ensure you're on a YouTube page (youtube.com)
+- Try refreshing the page
+- Check if Shorts are in a new format not covered by current selectors
+
+**High memory usage:**
+- The extension includes automatic cleanup that runs every 30 seconds
+- If issues persist, try restarting your browser
+
+**Popup not showing:**
+- Ensure the extension is properly loaded in `chrome://extensions`
+- Try reloading the extension
+
+### Getting Help
+- Check the browser console for error messages
+- Open an issue on GitHub with:
+  - Browser version
+  - Extension version
+  - Steps to reproduce the issue
+  - Screenshots if applicable
+
+---
+
+**Made with ❤️ for a cleaner YouTube experience**

@@ -1,7 +1,29 @@
+/* YouTube Shorts Hider - Precise selectors for Shorts only */
 body.hide-shorts ytd-rich-shelf-renderer[is-shorts],
 body.hide-shorts ytd-reel-shelf-renderer,
 body.hide-shorts ytd-rich-section-renderer:has([is-shorts]),
 body.hide-shorts [data-shorts-shelf],
-body.hide-shorts a[href^="/shorts/"] {
-  display: none;
+body.hide-shorts a[href^="/shorts/"][href$="/"],
+body.hide-shorts ytd-compact-video-renderer a[href^="/shorts/"],
+body.hide-shorts ytd-video-renderer a[href^="/shorts/"],
+body.hide-shorts ytd-grid-video-renderer a[href^="/shorts/"] {
+  display: none !important;
+}
+
+/* Hide individual Shorts video elements more precisely */
+body.hide-shorts ytd-compact-video-renderer:has(a[href^="/shorts/"]),
+body.hide-shorts ytd-video-renderer:has(a[href^="/shorts/"]),
+body.hide-shorts ytd-grid-video-renderer:has(a[href^="/shorts/"]) {
+  display: none !important;
+}
+
+/* Hide Shorts shelf sections specifically */
+body.hide-shorts ytd-rich-shelf-renderer:has([is-shorts]),
+body.hide-shorts ytd-reel-shelf-renderer[is-shorts] {
+  display: none !important;
+}
+
+/* Performance optimization - only apply to necessary elements */
+body.hide-shorts ytd-* {
+  transform: translateZ(0);
 }
